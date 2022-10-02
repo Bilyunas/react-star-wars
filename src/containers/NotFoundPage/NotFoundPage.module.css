@@ -1,0 +1,14 @@
+.notFound {
+    font-size: 40px;
+    color: var(--theme-def-header);
+    text-shadow: var(--text-shadow-yellow);
+    text-align: center;
+}
+
+.text {
+    margin-top: var(--spacing-large);
+    font-size: var(--font-size-subheader);
+    color: var(--color-white);
+    text-align: center;
+    text-shadow: var(--text-shadow-blue);
+}
