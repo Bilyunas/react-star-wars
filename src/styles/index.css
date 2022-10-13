@@ -28,6 +28,16 @@
 
   --transition: .4s;
 
+  --box-shadow-white:
+    0 16px 24px 2px rgba(255, 255, 255, 0.02),
+    0 6px 30px 5px rgba(255, 255, 255, 0.04),
+    0 8px 10px -5px rgba(255, 255, 255, 0.1);
+
+  --box-shadow-black:
+    0 16px 24px 2px rgba(0, 0, 0, 0.5),
+    0 6px 30px 5px rgba(0, 0, 0, 0.1),
+    0 8px 10px -5px rgba(0, 0, 0, 0.2);
+
   --text-shadow-yellow:
     0 0 2px var(--color-white),
     0 0 40px var(--color-yellow);
@@ -36,8 +46,20 @@
     0 0 2px var(--color-white),
     0 0 40px var(--color-blue);
 
-  --theme-def-header: #cccc46;
-  --theme-def-bg: url(../static/bg.jpg);
+/*THEME*/
+  --theme-light-header: #dfe2df;
+  --theme-dark-header: #ca6c6f;
+  --theme-def-header: var(--theme-light-header);
+
+  --theme-light-bg: linear-gradient(to left top, #002866, #1d367e, #354397, #4c52b0, #6460c9);
+  --theme-dark-bg: url(../static/bg-dark.jpg);
+  --theme-def-bg: var(--theme-light-bg);
+
+
+}
+
+*, *::after, *::before {
+  box-sizing: border-box;
 }
 
 body {

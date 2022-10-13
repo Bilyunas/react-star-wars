@@ -4,6 +4,7 @@ import s from "./HomePage.module.css";
 // HOC
 // UI компоненты
 // Компоненты
+import ChooseSide from "../../components/HomePage/ChooseSide/ChooseSide";
 // Изображения
 // Хуки
 // Роуты
@@ -13,11 +14,11 @@ import s from "./HomePage.module.css";
 // Стили
 
 const HomePage = () => {
-  return (
-    <>
-      <h1 className='header__text'>HomePage</h1>
-    </>
-  );
+	return (
+		<>
+			<h1 className='header__text'>HomePage</h1>
+		</>
+	);
 };
 
 export default HomePage;

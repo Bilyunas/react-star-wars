@@ -1,42 +1,51 @@
 // Библиотеки
-import PropTypes from "prop-types"
-import React, { useEffect, useState, Suspense } from "react"
-import { useParams } from "react-router"
+import PropTypes from "prop-types";
+import React, { useEffect, useState, Suspense } from "react";
+import { useParams } from "react-router";
 // Контекст
 // HOC
-import { withErrorApi } from "../../hoc-helpers/withErrorApi"
+import { withErrorApi } from "../../hoc-helpers/withErrorApi";
 // UI компоненты
 // Компоненты
-import PersonInfo from "../../components/PeoplePage/PersonInfo/PersonInfo"
-import PersonPhoto from "../../components/PeoplePage/PersonPhoto/PersonPhoto"
-import PersonLinkBack from "../../components/PeoplePage/PersonLinkBack/PersonLinkBack"
-import UiLoading from "../../components/UI/UiLoading/UiLoading"
+import PersonInfo from "../../components/PeoplePage/PersonInfo/PersonInfo";
+import PersonPhoto from "../../components/PeoplePage/PersonPhoto/PersonPhoto";
+import PersonLinkBack from "../../components/PeoplePage/PersonLinkBack/PersonLinkBack";
+import UiLoading from "../../components/UI/UiLoading/UiLoading";
 // Изображения
 // Хуки
+import { useSelector } from "react-redux";
 // Роуты
 // Утилиты
-import { getApiResource } from "../../utils/network"
-import { getPeopleImage } from "../../services/getPeopleData"
+import { getApiResource } from "../../utils/network";
+import { getPeopleImage } from "../../services/getPeopleData";
 // Сервисы
 // Константы
-import { API_PERSON } from "../../constants/api"
+import { API_PERSON } from "../../constants/api";
 // Стили
-import s from "./PersonPage.module.css"
+import s from "./PersonPage.module.css";
 
 const PersonFilms = React.lazy(() =>
 	import("../../components/PeoplePage/PersonFilms/PersonFilms")
-)
+);
 
 const PersonPage = ({ setErrorApi }) => {
-	const [personInfo, setPersonInfo] = useState(null)
-	const [personName, setPersonName] = useState(null)
-	const [personPhoto, setPersonPhoto] = useState(null)
-	const [personFilms, setPersonFilms] = useState(null)
+	const [personId, setPersonId] = useState(null);
+	const [personInfo, setPersonInfo] = useState(null);
+	const [personName, setPersonName] = useState(null);
+	const [personPhoto, setPersonPhoto] = useState(null);
+	const [personFilms, setPersonFilms] = useState(null);
+	const [personFavorite, setPersonFavorite] = useState(false);
 
-	const { id } = useParams()
+	const storeDate = useSelector(state => state.favoriteReducer);
+
+	const { id } = useParams();
 	useEffect(() => {
-		;(async () => {
-			const res = await getApiResource(`${API_PERSON}/${id}/`)
+		(async () => {
+			const res = await getApiResource(`${API_PERSON}/${id}/`);
+
+			storeDate[id] ? setPersonFavorite(true) : setPersonFavorite(false);
+
+			setPersonId(id);
 
 			if (res) {
 				setPersonInfo([
@@ -46,19 +55,19 @@ const PersonPage = ({ setErrorApi }) => {
 					{ title: "Цвет глаз:  ", data: res.eye_color },
 					{ title: "Год рождения:  ", data: res.birth_year },
 					{ title: "Пол:  ", data: res.gender },
-				])
+				]);
 
-				setPersonName(res.name)
-				setPersonPhoto(getPeopleImage(id))
+				setPersonName(res.name);
+				setPersonPhoto(getPeopleImage(id));
 
-				res.films.length && setPersonFilms(res.films)
+				res.films.length && setPersonFilms(res.films);
 
-				setErrorApi(false)
+				setErrorApi(false);
 			} else {
-				setErrorApi(true)
+				setErrorApi(true);
 			}
-		})()
-	}, [])
+		})();
+	}, []);
 
 	return (
 		<>
@@ -66,7 +75,13 @@ const PersonPage = ({ setErrorApi }) => {
 			<div className={s.wrapper}>
 				<span className={s.person__name}>{personName}</span>
 				<div className={s.container}>
-					<PersonPhoto personPhoto={personPhoto} personName={personName} />
+					<PersonPhoto
+						personId={personId}
+						personPhoto={personPhoto}
+						personName={personName}
+						personFavorite={personFavorite}
+						setPersonFavorite={setPersonFavorite}
+					/>
 					{personInfo && <PersonInfo personInfo={personInfo} />}
 					{personFilms && (
 						<Suspense fallback={<UiLoading />}>
@@ -76,11 +91,11 @@ const PersonPage = ({ setErrorApi }) => {
 				</div>
 			</div>
 		</>
-	)
-}
+	);
+};
 
 PersonPage.propTypes = {
 	setErrorApi: PropTypes.func,
-}
+};
 
-export default withErrorApi(PersonPage)
+export default withErrorApi(PersonPage);

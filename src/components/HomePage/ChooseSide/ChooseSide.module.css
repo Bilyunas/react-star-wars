@@ -1,0 +1,58 @@
+.switch {
+  display: flex;
+	position: relative;
+	margin-left: auto;
+  width: 74px;
+  height: 32px;
+  border-radius: 20px;
+  padding: 3px 0;
+}
+
+.switch__input, .switch__label {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.switch__input {
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  pointer-events: none;
+}
+
+.switch__input:checked + .switch__label {
+  background-color: var(--color-red);
+}
+/*Движение*/
+.switch__input:checked + .switch__label + .switch__marker {
+  left: 45px;
+}
+
+.switch__label {
+  width: 100%;
+  height: 100%;
+  color: transparent;
+          user-select: none;
+  background-color: #d3d3d4;
+  border-radius: inherit;
+  z-index: 1;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+.switch__marker {
+  position: relative;
+  background-color: var(--color-white);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  z-index: 2;
+  pointer-events: none;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  left: 3px;
+  transition: left 0.2s;
+  will-change: left;
+}
