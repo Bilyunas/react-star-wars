@@ -23,7 +23,7 @@ npm run deploy				# развернуть приложение на Github
 ```bash
 # Deploy (часть скрипта "deploy")
 npm run build				# создает приложение проекта
-npm run build-gh-pages		# развернуть на страницах Github
+npm run build-gh-pages			# развернуть на страницах Github
 ```
 
 ---
