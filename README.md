@@ -1,13 +1,13 @@
-# ![alt logo](https://img.icons8.com/color/48/000000/star-wars.png "Star Wars") Project: "Star Wars"
+# Project: "Star Wars"
 
-## ![alt links](https://img.icons8.com/emoji/48/000000/link-emoji.png "Links") Links
+## Ссылки
 
 - Проект: https://bilyunas.github.io/react-star-wars
 - Репозиторий: https://github.com/Bilyunas/react-star-wars
 
 ---
 
-## ![alt scripts](https://img.icons8.com/color/48/000000/property-script.png "Scripts") Доступные скрипты и команды
+## Доступные скрипты и команды
 
 ```bash
 # Установка
@@ -28,7 +28,7 @@ npm run build-gh-pages			# развернуть на страницах Github
 
 ---
 
-## ![alt api](https://img.icons8.com/external-others-inmotus-design/67/000000/external-API-vkontakte-others-inmotus-design-3.png "API") API
+## API
 
 - https://swapi.dev (основное API)
 - https://swapi.py4e.com (запасное API - если основное не работает)
@@ -36,7 +36,7 @@ npm run build-gh-pages			# развернуть на страницах Github
 
 ---
 
-## ![alt look](https://img.icons8.com/color/48/000000/look-for.png "Look") Рассмотренные темы
+## Рассмотренные темы
 
 ### React.js
 
@@ -98,7 +98,7 @@ npm run build-gh-pages			# развернуть на страницах Github
 
 ---
 
-## ![alt order](https://img.icons8.com/external-xnimrodx-blue-xnimrodx/64/000000/external-order-warehouse-xnimrodx-blue-xnimrodx.png "Order") Порядок импортов
+## Порядок импортов
 
 - Библиотеки
 - Контекст
